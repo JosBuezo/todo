@@ -7,8 +7,8 @@ class AppTodo extends Component {
   
   state = {
     todos: [
-      {id: 1, content: 'buy some milk'},
-      {id: 2, content: 'play mario cart'},
+      {id: 1, content: 'Wash dishes'},
+      {id: 2, content: 'Do Laundry'},
     ]
   }
   
@@ -41,3 +41,4 @@ class AppTodo extends Component {
     )
   }
 }
+export default AppTodo;

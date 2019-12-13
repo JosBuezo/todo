@@ -1,34 +1,44 @@
 import React, { Component } from "react";
-import "../../styles/home.scss";
-import AddTodo from ".views/form";;
+
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
 	state = {
-		todos: [{ id: 1, content: "Wake up by 5:30am" }, { id: 2, content: "Get ready for work by 6:30am" }]
+		posts: []
 	};
 
-	deleteTodo = id => {
-		const todos = this.state.todos.filter(todo => {
-			return todo.id !== id;
+	componentDidMount() {
+		axios.get("https://jsonplaceholder.typicode.com/posts").then(res => {
+			this.setState({
+				posts: res.data.slice(0, 10)
+			});
 		});
-		this.setState({
-			todos
-		});
-	};
-	addTodo = todo
-		todo.id = Math.random();
-		let todos = [...this.state.todos, todo];
-		this.setState({
-			todos
-		});
-	};
+	}
 
 	render() {
+		const { posts } = this.state;
+		const postList = posts.length ? (
+			posts.map(post => {
+				return (
+					<div className="post card" key={post.id}>
+						<div className="card-content">
+							<Link to={"/" + post.id}>
+								<span className="card-title">{post.title}</span>
+							</Link>
+							<p>{post.body}</p>
+						</div>
+					</div>
+				);
+			})
+		) : (
+			<div className="center">No Posts yet</div>
+		);
+
 		return (
-			<div className="home container">
-				<h1 className="center purple-text">What To Do Today?</h1>
-				<Todo todos={this.state.todos} deleteTodo={this.deleteTodo} />
-				<AddTodo addTodo={this.addTodo} />
+			<div className="container">
+				<h4 className="center">Home Page</h4>
+				{postList}
 			</div>
 		);
 	}

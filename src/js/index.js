@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import "../styles/index.scss";
 
-import Home from "./views/home";
+import Home from "./views/todos";
 
 //const Todos = ({ todos, deleteTodo }) => {
 //const todosList = todos.length ? (
