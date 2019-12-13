@@ -1,15 +1,29 @@
-//import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
 
-//include bootstrap npm library into the bundle
-import "bootstrap/dist/css/bootstrap.css";
-
-//include your index.scss file into the bundle
 import "../styles/index.scss";
 
-//import your own components
-import Layout from "./layout";
+import Home from "./views/home";
 
-//render your react application
-ReactDOM.render(<Layout />, document.querySelector("#app"));
+//const Todos = ({ todos, deleteTodo }) => {
+//const todosList = todos.length ? (
+//	todos.map(todo => {
+//		return (
+//			<div className="list-item" key={todo.id}>
+//				<span
+//					onClick={() => {
+//						deleteTodo(todo.id);
+//					}}>
+//					{todos.content}
+//				</span>
+//			</div>
+//		);
+//	})
+//) : (
+//	<p className="center">You have nothing to do today.</p>
+//);
+//	return <div className="todo list">{Todos}</div>;
+//};
+
+//export default Todos;
+ReactDOM.render(<Home />, document.getElementById("Home"));
